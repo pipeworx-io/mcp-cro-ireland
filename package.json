@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-cro-ireland",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "cro-ireland -- the CRO (Companies Registration Office), Ireland's statutory register for companies and business names. Fleet #3346.",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-5f08901d9e3c52e94557a62133df63caa2443266104551e95a7db067019ef276",
-    "sourceCommit": "b0a4b8e2f3f5b3a4c3f9f2c9a73f91b20d32ce11"
+    "sourceHash": "v1-36cc6a0d675fdbe5a3553af024e5e341013bbfdeb42a364b309767304a510921",
+    "sourceCommit": "f1ef7a2f6b9cb1b8da1374ec2fcb28c661582b35"
   }
 }

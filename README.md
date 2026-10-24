@@ -5,7 +5,7 @@ incorporation date for every registered company -- published as open data by
 the CRO (Companies Registration Office). Filings/submissions history is
 covered separately, live, against the CRO's own API (BYO key).
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1854+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1875+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
 
 Fleet #3346, filling the one EU-register gap we didn't cover (Companies
 House, Brønnøysund, Estonia, Latvia, GLEIF already shipped). Loaded live
@@ -123,7 +123,7 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1854+ data sources. The
+Both URLs reach the same gateway and the same 1875+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
 
