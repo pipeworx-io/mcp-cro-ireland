@@ -1,0 +1,68 @@
+[
+  {
+    "name": "ie_search_companies",
+    "description": "Search Ireland's company register (CRO -- the Companies Registration Office) by the start of a company's current registered name. Returns each match's CRO number, name, status (e.g. Normal/Dissolved/Liquidation), type, registered address and incorporation date. Prefix match only (\"Ryanair\" finds \"RYANAIR DESIGNATED ACTIVITY COMPANY\" and \"RYANAIR HOLDINGS PUBLIC LIMITED COMPANY\" but not \"Jet2Ryanair\"); case/punctuation-insensitive. The CRO registers the SAME legal entity under slightly different name spellings over time (suffix \"LIMITED\" vs \"LTD\", \"DESIGNATED ACTIVITY COMPANY\" vs \"DAC\") -- try both forms if a name search comes back thin. Use the returned cro_number with ie_get_company for full detail or ie_get_filings for its filing history.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Start of the company's current registered name, e.g. \"Ryanair\"."
+        },
+        "status": {
+          "type": "string",
+          "description": "Filter to one of the register's own status TEXT values, e.g. \"Normal\" or \"Dissolved\" (case-sensitive, as the CRO publishes it). Omit to search across every status."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Maximum results (1-100, default 20)."
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "ie_get_company",
+    "description": "One Irish company by its CRO number (the Companies Registration Office's statutory register number), from the CRO's own Company Records open data. Returns current registered name, status, company type, registered address, eircode, incorporation date, last/next annual-return dates, last accounts date and dissolution date when applicable. Use ie_search_companies first if you only have a name.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "cro_number": {
+          "type": "string",
+          "description": "CRO company number, e.g. \"249885\" (Ryanair Holdings plc)."
+        }
+      },
+      "required": [
+        "cro_number"
+      ]
+    }
+  },
+  {
+    "name": "ie_get_filings",
+    "description": "An Irish company's filing/submission history (annual returns, accounts, charges, etc.) by CRO number, from the CRO's (Companies Registration Office) own live Open Services REST API -- services.cro.ie. REQUIRES A CRO OPEN SERVICES API KEY: this data is not in the CRO's open-data snapshot, only in its live, access-controlled API. Register at https://services.cro.ie (a CORE customer account plus a signed Open Services Terms & Conditions submission; the CRO issues the key). Pass your registered email as _apiKey and the API key itself as _apiSecret. Without both, this tool refuses and does not guess or substitute other data.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "cro_number": {
+          "type": "string",
+          "description": "CRO company number, e.g. \"249885\"."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "CRO Open Services account email (the CustomerKey login)."
+        },
+        "_apiSecret": {
+          "type": "string",
+          "description": "CRO Open Services API key issued to that account."
+        }
+      },
+      "required": [
+        "cro_number",
+        "_apiKey",
+        "_apiSecret"
+      ]
+    }
+  }
+]
